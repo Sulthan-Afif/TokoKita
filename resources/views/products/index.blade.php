@@ -14,20 +14,20 @@
 
                 <a href="{{ route('products.index', request()->only('search', 'sort')) }}"
                    class="relative shrink-0 px-4 py-3.5 text-sm font-medium whitespace-nowrap transition-all duration-200
-                          {{ !request('category') ? 'text-indigo-600' : 'text-slate-600 hover:text-indigo-600' }}">
+                          {{ !request('category') ? 'text-emerald-600' : 'text-slate-600 hover:text-emerald-600' }}">
                     Semua
                     @unless(request('category'))
-                        <span class="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-indigo-600"></span>
+                        <span class="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-emerald-600"></span>
                     @endunless
                 </a>
 
                 @foreach($categories as $category)
                     <a href="{{ route('products.index', array_merge(request()->only('search', 'sort'), ['category' => $category->slug])) }}"
                        class="relative shrink-0 px-4 py-3.5 text-sm font-medium whitespace-nowrap transition-all duration-200
-                              {{ request('category') == $category->slug ? 'text-indigo-600' : 'text-slate-600 hover:text-indigo-600' }}">
+                              {{ request('category') == $category->slug ? 'text-emerald-600' : 'text-slate-600 hover:text-emerald-600' }}">
                         {{ $category->name }}
                         @if(request('category') == $category->slug)
-                            <span class="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-indigo-600"></span>
+                            <span class="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-emerald-600"></span>
                         @endif
                     </a>
                 @endforeach
@@ -56,7 +56,7 @@
         <input type="hidden" name="category" value="{{ request('category') }}">
         <label class="text-xs text-slate-400 hidden sm:inline">Urutkan</label>
         <select name="sort" onchange="this.form.submit()"
-                class="text-sm rounded-lg border-slate-200 bg-white focus:ring-indigo-500 focus:border-indigo-500">
+                class="text-sm rounded-lg border-slate-200 bg-white focus:ring-emerald-500 focus:border-emerald-500">
             <option value="">Terbaru</option>
             <option value="price_asc" @selected(request('sort')=='price_asc')>Harga Terendah</option>
             <option value="price_desc" @selected(request('sort')=='price_desc')>Harga Tertinggi</option>
@@ -68,7 +68,7 @@
 @if($products->isEmpty())
     <div class="text-center py-20 text-slate-400">
         <p class="text-base">Produk tidak ditemukan.</p>
-        <a href="{{ route('products.index') }}" class="inline-block mt-3 text-sm font-medium text-indigo-600 hover:underline">Lihat semua produk</a>
+        <a href="{{ route('products.index') }}" class="inline-block mt-3 text-sm font-medium text-emerald-600 hover:underline">Lihat semua produk</a>
     </div>
 @else
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">

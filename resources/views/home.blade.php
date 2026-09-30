@@ -38,7 +38,7 @@
                 ></div>
             </template>
             {{-- Dark overlay agar teks tetap terbaca --}}
-            <div class="absolute inset-0 bg-gradient-to-r from-indigo-950/80 via-indigo-900/60 to-violet-900/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/80 via-indigo-900/60 to-teal-900/40"></div>
         </div>
     </template>
 
@@ -141,7 +141,7 @@
 <section class="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3">
     @foreach($home['trust'] as $item)
         <div class="flex items-center gap-3 rounded-2xl bg-white border border-slate-100 p-4 shadow-sm hover:shadow-md hover:border-indigo-100 transition">
-            <div class="w-11 h-11 shrink-0 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white flex items-center justify-center">
+            <div class="w-11 h-11 shrink-0 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="{{ $item['icon'] }}" />
                 </svg>
@@ -163,7 +163,7 @@
             <p class="text-sm text-slate-400 mt-0.5">Temukan produk sesuai kebutuhanmu</p>
         </div>
         <a href="{{ route('products.index') }}"
-           class="text-sm font-semibold text-indigo-600 hover:text-indigo-500 flex items-center gap-1">
+           class="text-sm font-semibold text-emerald-600 hover:text-indigo-500 flex items-center gap-1">
             Lihat semua
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
         </a>
@@ -173,10 +173,10 @@
         $gradients = [
             'from-blue-500 to-cyan-400',
             'from-pink-500 to-rose-400',
-            'from-violet-500 to-purple-400',
+            'from-violet-500 to-teal-400',
             'from-amber-500 to-orange-400',
             'from-emerald-500 to-teal-400',
-            'from-indigo-500 to-blue-400',
+            'from-emerald-500 to-blue-400',
         ];
     @endphp
 
@@ -224,7 +224,7 @@
             <p class="text-sm text-slate-400 mt-0.5">Baru masuk, siap dibawa pulang</p>
         </div>
         <a href="{{ route('products.index') }}"
-           class="text-sm font-semibold text-indigo-600 hover:text-indigo-500 flex items-center gap-1">
+           class="text-sm font-semibold text-emerald-600 hover:text-indigo-500 flex items-center gap-1">
             Lihat semua
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
         </a>
@@ -245,13 +245,13 @@
 
 {{-- ========== CTA BAWAH ========== --}}
 <section class="mt-16 relative overflow-hidden rounded-[2rem] bg-slate-900 text-white p-8 sm:p-12 text-center">
-    <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/30 via-transparent to-pink-600/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/30 via-transparent to-pink-600/20"></div>
     <div class="relative">
         <h2 class="text-2xl sm:text-3xl font-extrabold">Siap mulai belanja?</h2>
         <p class="mt-2 text-slate-300 max-w-md mx-auto">Daftar gratis dan nikmati pengalaman belanja online yang mudah & aman.</p>
         <div class="mt-6 flex flex-wrap justify-center gap-3">
             <a href="{{ route('products.index') }}"
-               class="rounded-full bg-indigo-500 hover:bg-indigo-400 text-white font-bold px-7 py-3 transition shadow-lg shadow-indigo-500/30">
+               class="rounded-full bg-emerald-500 hover:bg-indigo-400 text-white font-bold px-7 py-3 transition shadow-lg shadow-indigo-500/30">
                 Jelajahi Produk
             </a>
             @guest

@@ -91,10 +91,16 @@ class MidtransService
         ]);
 
         try {
-            $response = Http::withBasicAuth($this->serverKey, '')
+            $http = Http::withBasicAuth($this->serverKey, '')
                 ->acceptJson()
-                ->timeout(30)
-                ->post(rtrim($this->apiUrl, '/') . '/transactions', $payload);
+                ->timeout(30);
+
+            // Local Windows: SSL CA sering hilang
+            if (! $this->isProduction && app()->environment('local')) {
+                $http = $http->withoutVerifying();
+            }
+
+            $response = $http->post(rtrim($this->apiUrl, '/') . '/transactions', $payload);
 
             if ($response->successful()) {
                 $data  = $response->json();
