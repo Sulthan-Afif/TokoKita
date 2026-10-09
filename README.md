@@ -1,115 +1,75 @@
-# TokoKita
+# TokoKita — Platform Toko Online untuk UMKM
 
-TokoKita adalah aplikasi toko online berbasis web yang dikembangkan menggunakan Laravel. Aplikasi ini menyediakan fitur untuk customer dalam melihat produk, mengelola keranjang, melakukan checkout, serta melihat pesanan. Selain itu, tersedia dashboard admin untuk mengelola produk, kategori, stok, pesanan, dan konten website.
+Website toko online berbasis Laravel yang memungkinkan pelanggan berbelanja dengan mudah dan pemilik toko mengelola produk, stok, serta pesanan melalui dashboard admin.
+
+---
+
+## Masalah
+
+Banyak pelaku UMKM ingin menjual produk secara online, tetapi kesulitan mengelola:
+- Katalog produk
+- Keranjang belanja & checkout
+- Pesanan pelanggan
+- Stok barang
+
+dalam satu sistem yang terintegrasi.
+
+## Solusi
+
+TokoKita menyediakan platform e-commerce lengkap.  
+Pelanggan dapat melihat produk, menambah ke keranjang, checkout, dan melacak pesanan.  
+Admin dapat mengelola seluruh operasional toko dari satu dashboard.
+
+## Fitur Utama
+
+**Customer**
+- Daftar & detail produk
+- Pencarian produk
+- Keranjang belanja (tambah, ubah jumlah, hapus)
+- Checkout & pembayaran
+- Riwayat dan detail pesanan
+- Manajemen profil & alamat
+
+**Admin**
+- Dashboard admin
+- Kelola produk, kategori, dan stok
+- Kelola pesanan
+- Kelola halaman website & hero slide
+- Pengaturan website
+
+## Tech Stack
+
+- Laravel
+- PHP
+- MySQL
+- Tailwind CSS
+- Vite
+- Alpine.js
+- Chart.js
 
 ## Demo
 
-🌐 **Live Website:**
-https://toko-kita-alpha.vercel.app
+🌐 **Live Website:** [https://toko-kita-alpha.vercel.app](https://toko-kita-alpha.vercel.app)
 
-## Repository
-
-📦 **GitHub:**
-https://github.com/SulthanAfif/TokoKita
-
-## Features
-
-### Customer
-
-* Melihat daftar produk
-* Melihat detail produk
-* Mencari produk
-* Menambahkan produk ke keranjang
-* Mengubah jumlah produk di keranjang
-* Checkout produk
-* Melakukan pembayaran
-* Melihat riwayat pesanan
-* Melihat detail pesanan
-* Mengelola profil
-* Mengelola alamat
-
-### Admin
-
-* Dashboard admin
-* Mengelola produk
-* Mengelola kategori
-* Mengelola stok
-* Mengelola pesanan
-* Mengelola halaman website
-* Mengelola hero slide
-* Mengelola pengaturan website
-
-## Technologies
-
-* Laravel
-* PHP
-* MySQL
-* Tailwind CSS
-* Vite
-* Alpine.js
-* Chart.js
-* JavaScript
-
-## Installation
-
-Clone repository:
+## Instalasi
 
 ```bash
 git clone https://github.com/SulthanAfif/TokoKita.git
-```
-
-Masuk ke folder project:
-
-```bash
 cd TokoKita
-```
-
-Install dependency PHP:
-
-```bash
 composer install
-```
-
-Install dependency JavaScript:
-
-```bash
-npm install
-```
-
-Buat file environment:
-
-```bash
 cp .env.example .env
-```
-
-Generate application key:
-
-```bash
 php artisan key:generate
-```
-
-Konfigurasi database pada file `.env`, kemudian jalankan migration:
-
-```bash
-php artisan migrate
-```
-
-Jalankan aplikasi:
-
-```bash
+# Atur database di .env
+php artisan migrate --seed
+php artisan storage:link
 php artisan serve
 ```
 
-Pada terminal lain, jalankan Vite:
+## Repository
 
-```bash
-npm run dev
-```
+📦 [https://github.com/SulthanAfif/TokoKita](https://github.com/SulthanAfif/TokoKita)
 
-## Project Structure
+---
 
-Project dikembangkan menggunakan framework Laravel dengan pemisahan komponen backend, frontend, routes, database, dan resource sesuai struktur Laravel.
-
-## Status
-
-✅ Project selesai dikembangkan dan dapat digunakan sebagai aplikasi toko online berbasis web.
+**TokoKita** — solusi toko online praktis untuk UMKM.  
+Dibangun sebagai portfolio oleh KaryaBit Studio.
