@@ -72,4 +72,3 @@ php artisan serve
 ---
 
 **TokoKita** — solusi toko online praktis untuk UMKM.  
-Dibangun sebagai portfolio oleh KaryaBit Studio.
