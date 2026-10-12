@@ -5,7 +5,7 @@
 @section('content')
 <div class="max-w-3xl">
     <div class="mb-6">
-        <a href="{{ route('admin.orders.index') }}" class="text-sm text-slate-500 hover:text-indigo-600 transition">← Kembali</a>
+        <a href="{{ route('admin.orders.index') }}" class="text-sm text-slate-500 hover:text-emerald-600 transition">← Kembali</a>
         <div class="flex flex-wrap items-center gap-3 mt-2">
             <h2 class="text-lg font-semibold text-slate-800">{{ $order->order_number }}</h2>
             @php
@@ -43,14 +43,14 @@
             <div class="flex-1 min-w-[180px]">
                 <label class="block text-xs text-slate-500 mb-1">Status baru</label>
                 <select name="status" required
-                        class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500">
                     @foreach(['pending','paid','processing','shipped','completed','cancelled'] as $s)
                         <option value="{{ $s }}" @selected($order->status === $s)>{{ ucfirst($s) }}</option>
                     @endforeach
                 </select>
             </div>
             <button type="submit"
-                    class="rounded-xl bg-indigo-600 text-white px-5 py-2.5 text-sm font-semibold hover:bg-indigo-500 transition">
+                    class="rounded-xl bg-emerald-600 text-white px-5 py-2.5 text-sm font-semibold hover:bg-emerald-500 transition">
                 Update Status
             </button>
         </form>
@@ -75,7 +75,7 @@
             <span class="text-slate-500">Ongkir</span>
             <span>Rp{{ number_format($order->shipping_cost, 0, ',', '.') }}</span>
         </div>
-        <div class="flex justify-between font-bold text-indigo-600">
+        <div class="flex justify-between font-bold text-emerald-600">
             <span>Total</span>
             <span>Rp{{ number_format($order->total, 0, ',', '.') }}</span>
         </div>

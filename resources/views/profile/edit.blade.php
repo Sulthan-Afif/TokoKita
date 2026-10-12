@@ -18,14 +18,14 @@
             <div>
                 <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Nama</label>
                 <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}" required
-                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500">
                 @error('name') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
             </div>
 
             <div>
                 <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
                 <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}" required
-                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500">
                 @error('email') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
             </div>
 
@@ -33,12 +33,12 @@
                 <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">No. Telepon</label>
                 <input type="text" id="phone" name="phone" value="{{ old('phone', $user->phone) }}"
                        placeholder="08xxxxxxxxxx"
-                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500">
                 @error('phone') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
             </div>
 
             <button type="submit"
-                    class="rounded-full bg-indigo-600 text-white px-6 py-2.5 text-sm font-semibold hover:bg-indigo-500 transition">
+                    class="rounded-full bg-emerald-600 text-white px-6 py-2.5 text-sm font-semibold hover:bg-emerald-500 transition">
                 Simpan Perubahan
             </button>
         </form>
@@ -57,7 +57,7 @@
                             <p class="font-semibold text-slate-800">
                                 {{ $address->label }}
                                 @if($address->is_default)
-                                    <span class="ml-1 text-xs bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full">Default</span>
+                                    <span class="ml-1 text-xs bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-full font-bold">Default</span>
                                 @endif
                             </p>
                             <p class="text-slate-600 mt-1">{{ $address->recipient_name }} · {{ $address->phone }}</p>
@@ -82,14 +82,14 @@
                 <div>
                     <label class="block text-sm text-slate-600 mb-1">Label</label>
                     <input type="text" name="label" value="{{ old('label', 'Rumah') }}" required
-                           class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500"
+                           class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500"
                            placeholder="Rumah / Kantor">
                     @error('label') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label class="block text-sm text-slate-600 mb-1">Nama Penerima</label>
                     <input type="text" name="recipient_name" value="{{ old('recipient_name', $user->name) }}" required
-                           class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+                           class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500">
                     @error('recipient_name') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
                 </div>
             </div>
@@ -97,7 +97,7 @@
             <div>
                 <label class="block text-sm text-slate-600 mb-1">No. Telepon</label>
                 <input type="text" name="phone" value="{{ old('phone', $user->phone) }}" required
-                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500"
+                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500"
                        placeholder="08xxxxxxxxxx">
                 @error('phone') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
             </div>
@@ -105,7 +105,7 @@
             <div>
                 <label class="block text-sm text-slate-600 mb-1">Alamat Lengkap</label>
                 <textarea name="full_address" rows="2" required
-                          class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500"
+                          class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500"
                           placeholder="Jl. Merdeka No. 123, RT 01/02">{{ old('full_address') }}</textarea>
                 @error('full_address') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
             </div>
@@ -114,25 +114,25 @@
                 <div>
                     <label class="block text-sm text-slate-600 mb-1">Kota</label>
                     <input type="text" name="city" value="{{ old('city') }}" required
-                           class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+                           class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500">
                     @error('city') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label class="block text-sm text-slate-600 mb-1">Provinsi</label>
                     <input type="text" name="province" value="{{ old('province') }}" required
-                           class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+                           class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500">
                     @error('province') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label class="block text-sm text-slate-600 mb-1">Kode Pos</label>
                     <input type="text" name="postal_code" value="{{ old('postal_code') }}" required
-                           class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+                           class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500">
                     @error('postal_code') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
                 </div>
             </div>
 
             <button type="submit"
-                    class="rounded-full bg-indigo-600 text-white px-6 py-2.5 text-sm font-semibold hover:bg-indigo-500 transition">
+                    class="rounded-full bg-emerald-600 text-white px-6 py-2.5 text-sm font-semibold hover:bg-emerald-500 transition">
                 Tambah Alamat
             </button>
         </form>
@@ -150,7 +150,7 @@
             <div>
                 <label for="current_password" class="block text-sm font-medium text-slate-700 mb-1">Password Saat Ini</label>
                 <input type="password" id="current_password" name="current_password" required
-                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500"
+                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500"
                        autocomplete="current-password">
                 @error('current_password', 'updatePassword') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
             </div>
@@ -158,7 +158,7 @@
             <div>
                 <label for="password" class="block text-sm font-medium text-slate-700 mb-1">Password Baru</label>
                 <input type="password" id="password" name="password" required
-                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500"
+                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500"
                        autocomplete="new-password">
                 @error('password', 'updatePassword') <p class="mt-1 text-sm text-red-500">{{ $message }}</p> @enderror
             </div>
@@ -166,12 +166,12 @@
             <div>
                 <label for="password_confirmation" class="block text-sm font-medium text-slate-700 mb-1">Konfirmasi Password Baru</label>
                 <input type="password" id="password_confirmation" name="password_confirmation" required
-                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-indigo-500 focus:border-indigo-500"
+                       class="w-full rounded-xl border-slate-300 text-sm focus:ring-emerald-500 focus:border-emerald-500"
                        autocomplete="new-password">
             </div>
 
             <button type="submit"
-                    class="rounded-full bg-indigo-600 text-white px-6 py-2.5 text-sm font-semibold hover:bg-indigo-500 transition">
+                    class="rounded-full bg-emerald-600 text-white px-6 py-2.5 text-sm font-semibold hover:bg-emerald-500 transition">
                 Update Password
             </button>
         </form>

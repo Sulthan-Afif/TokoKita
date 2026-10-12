@@ -8,8 +8,8 @@ use App\Services\MidtransService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
@@ -27,7 +27,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         abort_if($order->user_id !== Auth::id(), 403);
-        $order->load('items', 'address');
+        $order->load('items.product', 'address');
         return view('orders.show', compact('order'));
     }
 
@@ -45,30 +45,84 @@ class OrderController extends Controller
                 ->with('error', 'Halaman pembayaran hanya untuk metode online.');
         }
 
-        if (!$midtrans->isConfigured()) {
-            Log::error('Midtrans belum dikonfigurasi (SERVER_KEY / CLIENT_KEY kosong)');
-            return redirect()->route('orders.show', $order)
-                ->with('error', 'Pembayaran online belum dikonfigurasi. Hubungi admin.');
-        }
+        $order->load(['items', 'address', 'user']);
 
-        $order->load('items');
-
-        // SELALU buat token baru (order_id unik) — jangan reuse token lama
-        // Token lama sering invalid / order_id sudah dipakai di Midtrans
+        // Generate Snap Token (atau simulasi jika kunci sandbox error/unauthorized)
         $snap = $midtrans->createSnapToken($order);
         $snapToken = $snap['token'] ?? null;
+        $isSimulated = $snap['is_simulated'] ?? false;
+        $simulationReason = $snap['simulation_reason'] ?? null;
 
         if (!$snapToken) {
             return redirect()->route('orders.show', $order)
-                ->with('error', 'Gagal membuat token pembayaran. Coba lagi beberapa saat, atau buat pesanan baru.');
+                ->with('error', 'Gagal memproses pembayaran Midtrans. Silakan periksa pengaturan atau ganti metode pembayaran.');
         }
 
         return view('orders.payment', [
-            'order'     => $order,
-            'snapToken' => $snapToken,
-            'clientKey' => $midtrans->getClientKey(),
-            'snapJsUrl' => $midtrans->getSnapJsUrl(),
+            'order'            => $order,
+            'snapToken'        => $snapToken,
+            'isSimulated'      => $isSimulated,
+            'simulationReason' => $simulationReason,
+            'clientKey'        => $midtrans->getClientKey(),
+            'snapJsUrl'        => $midtrans->getSnapJsUrl(),
+            'isConfigured'     => $midtrans->isConfigured(),
         ]);
+    }
+
+    /**
+     * Eksekusi simulasi bayar / batal saat mode sandbox simulator aktif
+     */
+    public function simulatePayment(Request $request, Order $order, MidtransService $midtrans)
+    {
+        abort_if($order->user_id !== Auth::id(), 403);
+
+        abort_unless(! $midtrans->isProduction() && $midtrans->isSimulatorEnabled(), 404);
+
+        $request->validate([
+            'action' => 'required|in:success,cancel',
+            'sim_payment_type' => 'nullable|in:qris,bca_va,mandiri_va,credit_card',
+        ]);
+
+        if ($order->status !== 'pending') {
+            return redirect()->route('orders.show', $order)
+                ->with('error', 'Pesanan ini sudah tidak menunggu pembayaran.');
+        }
+
+        $action = $request->input('action', 'success');
+
+        if ($action === 'success') {
+            $paymentType = $request->input('sim_payment_type', 'qris');
+            $update = [
+                'status'  => 'paid',
+                'paid_at' => now(),
+            ];
+            if (Schema::hasColumn('orders', 'payment_type')) {
+                $update['payment_type'] = $paymentType;
+            }
+            if (Schema::hasColumn('orders', 'midtrans_transaction_id')) {
+                $update['midtrans_transaction_id'] = 'SIM-' . strtoupper(Str::random(12));
+            }
+            $order->update($update);
+
+            return redirect()->route('orders.show', $order)
+                ->with('success', 'Pembayaran Simulasi Midtrans Sandbox Berhasil! Status pesanan kini telah lunas.');
+        }
+
+        if ($action === 'cancel') {
+            DB::transaction(function () use ($order) {
+                foreach ($order->items as $item) {
+                    if ($item->product_id) {
+                        Product::where('id', $item->product_id)->increment('stock', $item->quantity);
+                    }
+                }
+                $order->update(['status' => 'cancelled']);
+            });
+
+            return redirect()->route('orders.show', $order)
+                ->with('success', 'Pesanan berhasil dibatalkan dan stok produk dikembalikan.');
+        }
+
+        return redirect()->route('orders.show', $order);
     }
 
     public function processPayment(Request $request, Order $order)

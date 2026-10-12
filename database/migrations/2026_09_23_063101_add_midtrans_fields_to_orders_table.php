@@ -9,10 +9,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->string('snap_token')->nullable()->after('payment_method');
-            $table->string('midtrans_order_id')->nullable()->after('snap_token');
-            $table->string('midtrans_transaction_id')->nullable()->after('midtrans_order_id');
-            $table->string('payment_type')->nullable()->after('midtrans_transaction_id');
+            if (!Schema::hasColumn('orders', 'snap_token')) {
+                $table->string('snap_token')->nullable()->after('payment_method');
+            }
+            if (!Schema::hasColumn('orders', 'midtrans_order_id')) {
+                $table->string('midtrans_order_id')->nullable()->after('snap_token');
+            }
+            if (!Schema::hasColumn('orders', 'midtrans_transaction_id')) {
+                $table->string('midtrans_transaction_id')->nullable()->after('midtrans_order_id');
+            }
+            if (!Schema::hasColumn('orders', 'payment_type')) {
+                $table->string('payment_type')->nullable()->after('midtrans_transaction_id');
+            }
         });
     }
 

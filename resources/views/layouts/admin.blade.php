@@ -121,6 +121,15 @@
                 Slide Latar Hero
             </a>
 
+            <a href="{{ route('admin.midtrans.index') }}"
+               class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition
+                      {{ request()->routeIs('admin.midtrans.*') ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white' }}">
+                <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-6-10.5h19.5a1.5 1.5 0 011.5 1.5v9a1.5 1.5 0 01-1.5 1.5H2.25A1.5 1.5 0 01.75 16.5v-9a1.5 1.5 0 011.5-1.5z" />
+                </svg>
+                Payment (Midtrans)
+            </a>
+
             <div class="pt-4 mt-4 border-t border-slate-700/60">
                 <p class="px-3 mb-2 text-[10px] font-semibold uppercase tracking-wider text-slate-500">Lainnya</p>
 

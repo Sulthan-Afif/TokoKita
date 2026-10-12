@@ -9,8 +9,8 @@
 
 <div class="relative" x-data="{ open: false }" @click.outside="open = false">
     <button type="button" @click="open = !open"
-            class="relative inline-flex items-center justify-center p-2.5 text-slate-600 rounded-lg
-                   transition-all duration-200 hover:text-indigo-600 hover:bg-indigo-50 hover:scale-110 active:scale-95"
+            class="relative inline-flex items-center justify-center p-2.5 text-slate-600 rounded-xl
+                   transition-all duration-200 hover:text-emerald-600 hover:bg-emerald-50 hover:scale-110 active:scale-95"
             title="Notifikasi" aria-label="Notifikasi">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
@@ -31,11 +31,11 @@
          x-transition:leave="transition ease-in duration-100"
          x-transition:leave-start="opacity-100 translate-y-0 scale-100"
          x-transition:leave-end="opacity-0 translate-y-1 scale-95"
-         class="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl border border-slate-200 bg-white shadow-xl z-50 overflow-hidden">
+         class="absolute right-0 mt-2 w-80 sm:w-96 rounded-3xl border border-slate-200/80 bg-white shadow-xl z-50 overflow-hidden">
 
         <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100">
-            <h3 class="font-semibold text-slate-800">Notifikasi</h3>
-            <a href="{{ route('orders.index') }}" class="text-xs font-medium text-indigo-600 hover:text-indigo-500">Lihat Semua</a>
+            <h3 class="font-bold text-slate-800 text-sm">Notifikasi</h3>
+            <a href="{{ route('orders.index') }}" class="text-xs font-semibold text-emerald-600 hover:text-emerald-700">Lihat Semua</a>
         </div>
 
         {{-- Status ringkas --}}

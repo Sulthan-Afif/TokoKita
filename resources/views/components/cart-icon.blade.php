@@ -20,9 +20,9 @@
 
 <a href="{{ auth()->check() ? route('cart.index') : route('login') }}"
    {{ $attributes->merge([
-       'class' => "relative inline-flex items-center justify-center {$padClass} text-slate-600 rounded-lg
+       'class' => "relative inline-flex items-center justify-center {$padClass} text-slate-600 rounded-xl
                    transition-all duration-200
-                   hover:text-indigo-600 hover:bg-indigo-50 hover:scale-110 active:scale-95",
+                   hover:text-emerald-600 hover:bg-emerald-50 hover:scale-110 active:scale-95",
        'title' => 'Keranjang' . ($count > 0 ? " ({$count} item)" : ''),
        'aria-label' => 'Keranjang belanja' . ($count > 0 ? ", {$count} item" : ''),
    ]) }}>

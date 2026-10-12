@@ -16,9 +16,9 @@
 {{-- Filter --}}
 <form method="GET" class="flex flex-wrap items-center gap-3 mb-5">
     <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari no. pesanan / pelanggan / produk..."
-           class="rounded-xl border-slate-200 bg-white px-4 py-2 text-sm focus:ring-indigo-500 focus:border-indigo-500 min-w-[220px]">
+           class="rounded-xl border-slate-200 bg-white px-4 py-2 text-sm focus:ring-emerald-500 focus:border-emerald-500 min-w-[220px]">
     <select name="status" onchange="this.form.submit()"
-            class="rounded-xl border-slate-200 bg-white px-4 py-2 text-sm focus:ring-indigo-500 focus:border-indigo-500">
+            class="rounded-xl border-slate-200 bg-white px-4 py-2 text-sm focus:ring-emerald-500 focus:border-emerald-500">
         <option value="">Semua Status</option>
         @foreach(['pending','paid','processing','shipped','completed','cancelled'] as $s)
             <option value="{{ $s }}" @selected(request('status')===$s)>{{ ucfirst($s) }}</option>
@@ -68,7 +68,7 @@
                                 @endforeach
                             </ul>
                         </td>
-                        <td class="px-4 py-3.5 font-bold text-indigo-600">{{ $qty }}</td>
+                        <td class="px-4 py-3.5 font-bold text-emerald-600">{{ $qty }}</td>
                         <td class="px-4 py-3.5 font-semibold whitespace-nowrap">Rp{{ number_format($order->total, 0, ',', '.') }}</td>
                         <td class="px-4 py-3.5">
                             <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium capitalize {{ $statusColors[$order->status] ?? 'bg-slate-100 text-slate-600' }}">
@@ -78,7 +78,7 @@
                         <td class="px-4 py-3.5 text-slate-500 whitespace-nowrap">{{ $order->created_at->format('l, d M Y, H:i') }}</td>
                         <td class="px-4 py-3.5">
                             <a href="{{ route('admin.orders.show', $order) }}"
-                               class="px-3 py-1.5 rounded-lg text-xs font-medium text-indigo-600 bg-indigo-50 hover:bg-indigo-100 transition">
+                               class="px-3 py-1.5 rounded-lg text-xs font-medium text-emerald-600 bg-emerald-50 hover:bg-emerald-100 transition">
                                 Detail
                             </a>
                         </td>

@@ -33,32 +33,39 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
-<body class="bg-[#f5f5f5] text-slate-800 antialiased min-h-screen flex flex-col">
+<body class="bg-slate-50/70 text-slate-800 antialiased min-h-screen flex flex-col font-sans selection:bg-emerald-500 selection:text-white">
 
     <x-navbar />
 
     {{-- Flash messages --}}
     <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
         @if(session('success'))
-            <div class="mt-4 rounded-xl bg-green-50 border border-green-200 text-green-700 px-4 py-3 text-sm flex items-center gap-2"
-                 x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)" x-transition>
-                <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                {{ session('success') }}
+            <div class="mt-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3.5 text-sm flex items-center justify-between shadow-sm"
+                 x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 5000)" x-transition>
+                <div class="flex items-center gap-2.5">
+                    <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="font-medium">{{ session('success') }}</span>
+                </div>
+                <button @click="show = false" class="text-emerald-500 hover:text-emerald-700">&times;</button>
             </div>
         @endif
         @if(session('error'))
-            <div class="mt-4 rounded-xl bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm flex items-center gap-2">
-                <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-                </svg>
-                {{ session('error') }}
+            <div class="mt-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 px-4 py-3.5 text-sm flex items-center justify-between shadow-sm"
+                 x-data="{ show: true }" x-show="show">
+                <div class="flex items-center gap-2.5">
+                    <svg class="w-5 h-5 text-rose-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>
+                    <span class="font-medium">{{ session('error') }}</span>
+                </div>
+                <button @click="show = false" class="text-rose-500 hover:text-rose-700">&times;</button>
             </div>
         @endif
         @if($errors->any())
-            <div class="mt-4 rounded-xl bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm">
-                <ul class="list-disc list-inside space-y-1">
+            <div class="mt-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 px-4 py-3.5 text-sm shadow-sm">
+                <ul class="list-disc list-inside space-y-1 font-medium">
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach

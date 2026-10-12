@@ -84,7 +84,7 @@
 <div class="rounded-2xl bg-white border border-slate-200 overflow-hidden">
     <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
         <h3 class="font-semibold text-slate-800">Pesanan Terbaru</h3>
-        <a href="{{ route('admin.orders.index') }}" class="text-xs font-medium text-indigo-600 hover:text-indigo-500">Lihat semua</a>
+        <a href="{{ route('admin.orders.index') }}" class="text-xs font-medium text-emerald-600 hover:text-emerald-500">Lihat semua</a>
     </div>
     <div class="overflow-x-auto table-scroll">
         <table class="w-full text-sm">
@@ -160,8 +160,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     type: 'line',
                     label: 'Pendapatan (Rp)',
                     data: charts.sales.revenue,
-                    borderColor: '#6366f1',
-                    backgroundColor: 'rgba(99, 102, 241, 0.12)',
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.12)',
                     fill: true,
                     tension: 0.35,
                     yAxisID: 'y',

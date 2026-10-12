@@ -20,7 +20,7 @@
                     @if(auth()->user()->isAdmin())
                         <span class="text-slate-300">|</span>
                         <a href="{{ route('admin.dashboard') }}"
-                           class="px-2.5 py-1 text-emerald-600 font-medium hover:text-indigo-500 transition-colors duration-200">
+                           class="px-2.5 py-1 text-emerald-600 font-medium hover:text-emerald-700 transition-colors duration-200">
                             Admin Panel
                         </a>
                     @endif
@@ -51,11 +51,11 @@
             <form action="{{ route('products.index') }}" method="GET" class="hidden sm:flex flex-1 min-w-0">
                 <div class="relative w-full group">
                     <input type="text" name="search" value="{{ request('search') }}"
-                           placeholder="Cari produk..."
-                           class="w-full rounded-lg border border-slate-200 bg-white pl-4 pr-12 py-2.5 text-sm
-                                  transition-all duration-300 ease-out
-                                  focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:shadow-md focus:shadow-indigo-50
-                                  group-hover:border-indigo-300">
+                           placeholder="Cari produk pilihan..."
+                           class="w-full rounded-xl border border-slate-200 bg-white pl-4 pr-12 py-2.5 text-sm
+                                  transition-all duration-200 ease-out
+                                  focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:shadow-md focus:shadow-emerald-50
+                                  group-hover:border-emerald-300">
                     <button type="submit"
                             class="absolute right-1.5 top-1/2 -translate-y-1/2 flex items-center justify-center
                                    w-9 h-8 rounded-md bg-emerald-600 text-white
@@ -103,7 +103,7 @@
                     </a>
                     <a href="{{ route('register') }}"
                        class="ml-1.5 px-4 py-2 text-sm font-semibold text-white bg-emerald-600 rounded-lg shadow-sm
-                              transition-all duration-200 hover:bg-emerald-500 hover:scale-[1.02] hover:shadow-md hover:shadow-indigo-200 active:scale-95">
+                              transition-all duration-200 hover:bg-emerald-500 hover:scale-[1.02] hover:shadow-md hover:shadow-emerald-200 active:scale-95">
                         Daftar
                     </a>
                 @endauth

@@ -12,10 +12,10 @@
    class="relative inline-flex items-center gap-2 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 group"
    title="{{ $name }} — Profil">
     <span class="flex h-9 w-9 items-center justify-center rounded-full {{ $color }} text-white text-sm font-bold
-                 ring-2 ring-white shadow-md group-hover:ring-indigo-200 transition">
+                 ring-2 ring-white shadow-md group-hover:ring-emerald-200 transition">
         {{ $initial }}
     </span>
-    <span class="hidden lg:inline text-sm font-medium text-slate-700 group-hover:text-indigo-600 max-w-[100px] truncate">
+    <span class="hidden lg:inline text-sm font-semibold text-slate-700 group-hover:text-emerald-600 max-w-[100px] truncate">
         {{ explode(' ', $name)[0] }}
     </span>
 </a>

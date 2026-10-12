@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\StockController as AdminStockController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use App\Http\Controllers\Admin\HeroSlideController as AdminHeroSlideController;
+use App\Http\Controllers\Admin\MidtransSettingController as AdminMidtransController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
@@ -77,6 +78,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/pesanan/{order}', [OrderController::class, 'show'])->name('orders.show');               // Detail 1 pesanan
     Route::get('/pesanan/{order}/bayar', [OrderController::class, 'payment'])->name('orders.payment');   // Halaman bayar
     Route::post('/pesanan/{order}/bayar', [OrderController::class, 'processPayment'])->name('orders.processPayment'); // Proses bayar
+    Route::post('/pesanan/{order}/simulasi-bayar', [OrderController::class, 'simulatePayment'])->name('orders.simulatePayment'); // Simulasi pembayaran
     Route::post('/pesanan/{order}/batalkan', [OrderController::class, 'cancel'])->name('orders.cancel'); // Batalkan pesanan
     Route::patch('/pesanan/{order}/metode-pembayaran', [OrderController::class, 'updatePaymentMethod'])->name('orders.updatePayment'); // Ubah metode bayar
 
@@ -116,6 +118,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Pengaturan statistik beranda (angka-angka di hero section)
     Route::get('pengaturan/statistik', [AdminSettingController::class, 'edit'])->name('settings.edit');
     Route::put('pengaturan/statistik', [AdminSettingController::class, 'update'])->name('settings.update');
+
+    // Pengaturan Midtrans Payment Gateway
+    Route::get('pengaturan/midtrans', [AdminMidtransController::class, 'index'])->name('midtrans.index');
+    Route::put('pengaturan/midtrans', [AdminMidtransController::class, 'update'])->name('midtrans.update');
+    Route::post('pengaturan/midtrans/test', [AdminMidtransController::class, 'test'])->name('midtrans.test');
 
     // Manajemen slide hero (gambar carousel di beranda)
     Route::get('hero-slides', [AdminHeroSlideController::class, 'index'])->name('hero-slides.index');
